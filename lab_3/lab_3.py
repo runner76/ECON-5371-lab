@@ -66,7 +66,8 @@ plt.tight_layout()
 plt.show()
 
 # Discussion: Does the mean of this series look constant over time, or
-# do you see one or more points where its behavior seems to shift? No, the mean shifts from 2016-2020~.
+# do you see one or more points where its behavior seems to shift?
+# The mean is not constant over time for sure. There are two level shifts post-both 2016 and 2021.
 
 
 # %% 2. Chow Test -- A Known Break Date
@@ -84,9 +85,8 @@ chow_result = run_chow_test(series.values, break_index, label=f"break at {break_
 
 # Discussion: Given the F-statistic and p-value above, do we reject H0?
 # What does that tell us -- and what does it NOT tell us, if we hadn't
-# already known to look at this specific date? If we didn't know what to look at this date,
-# we would take said date as a break due to the significant rejection value.
-
+# already known to look at this specific date?
+# The joint F-Statistic significance tell us that there is evidence that the mean is not constant across both periods.
 
 # %% 3. QLR Test -- An Unknown Break Date
 #
@@ -102,7 +102,9 @@ print(f"QLR's best break point corresponds to: {qlr_break_date}")
 # Discussion: Does QLR find the same break date we assumed in Section
 # 2 -- without being told where to look? What does it mean that QLR's
 # F-statistic at its best point matches the Chow F-statistic from
-# Section 2? Yes, it did in this case.
+# Section 2?
+# 1) Yes, it found the same break date automatically—given the 15% trim.
+# 2) The break date is clearly and easily observable due to its distinct visualization on the time series.
 
 
 # %% 4. Bai-Perron -- Multiple Break Detection
@@ -175,17 +177,19 @@ ax.legend()
 plt.tight_layout()
 plt.show()
 
-# Discussion: How many breaks did Bai-Perron find? Does it agree with
-# QLR on at least one of them? Is there a break here that neither Chow
-# nor QLR could have told us about -- and why not, given how each test
-# is built?
+# Discussion: How many breaks did Bai-Perron find? 2. Does it agree with
+# QLR on at least one of them? Yes, on the first break that occurred.
+# Is there a break here that neither Chow nor QLR could have told us about -- 
+# and why not, given how each test is built? With the given information set,
+# no additional break can be identified so far.
 #
 # Now look at the segment means and +/- 2 SD bands you just plotted:
 # did the break points only shift the LEVEL of inflation, or did the
 # spread around that level change too? What would it mean, economically,
 # for a regime to be both higher-inflation AND more volatile at the
-# same time -- rather than just higher? The spread also increased in magnitude. 
-# Higher-inflation and more volatile means increased uncertainty on the price index.
+# same time -- rather than just higher?
+# Each segment's variance shifted as well—with the 2016 segment having a seemingly higher variance.
+# In economic terms, it means that there is higher risk of a recession.
 
 
 # %% 5. Putting It Together -- Which Test, When?
@@ -228,7 +232,9 @@ plt.show()
 # If you suspect your series has a structural break somewhere in its
 # history but you are not sure when, or how many -- which of these three
 # tools would you reach for first, and what would make you switch to a different one?
-# I would reach to the QLR test first, and later on to the Bai-Perron one.
+# If break dates are unknown and how many, Bai-Perron is the to-go test.
+# If there is at least either a specifically-known date or an observable/known break,
+# there is no need to run a Bai-Perron test.
 
 
 # %% Lab Complete -- Before You Leave
