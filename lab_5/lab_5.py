@@ -65,7 +65,7 @@ CONFIG = {
     "lab_folder": r"/Users/lcorozco/ECON-5371-lab/lab_5",
 
     # Where is the data located
-    "data": r"/Users/lcorozco/ECON-5371-lab/lab_5/yield_curve_synthetic.csv",
+    "data": r"https://raw.githubusercontent.com/runner76/ECON-5371-lab/refs/heads/main/lab_5/yield_curve_synthetic.csv""
 
     # The two variables this lab analyzes, and the order they're
     # analyzed in (this order matters for how the cointegrating vector
