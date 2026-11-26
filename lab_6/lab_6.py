@@ -46,7 +46,7 @@ CONFIG = {
 
     # Raw GitHub URL for this lab's data. Replace with YOUR OWN repo's
     # raw URL once you've committed the CSV.
-    "data": r"/Users/lcorozco/ECON-5371-lab/lab_6/returns_synthetic.csv",
+    "data": r"https://raw.githubusercontent.com/runner76/ECON-5371-lab/refs/heads/main/lab_6/returns_synthetic.csv"
 
     # Lags for the ARCH-LM test.
     "arch_lm_lags": 5,
